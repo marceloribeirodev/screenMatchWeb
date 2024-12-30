@@ -1,6 +1,8 @@
 package com.marceloribeirodev.screenmatch.controller;
 
+import com.marceloribeirodev.screenmatch.dto.EpisodioDTO;
 import com.marceloribeirodev.screenmatch.dto.SerieDTO;
+import com.marceloribeirodev.screenmatch.model.Episodio;
 import com.marceloribeirodev.screenmatch.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,5 +37,10 @@ public class SerieController {
     @GetMapping("/{id}")
     public SerieDTO obterPorId(@PathVariable Long id){
         return serieService.obterPorId(id);
+    }
+
+    @GetMapping("{id}/temporadas/todas")
+    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id){
+        return serieService.obterTodasTemporadas(id);
     }
 }

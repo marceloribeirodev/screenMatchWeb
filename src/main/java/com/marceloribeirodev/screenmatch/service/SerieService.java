@@ -2,6 +2,7 @@ package com.marceloribeirodev.screenmatch.service;
 
 import com.marceloribeirodev.screenmatch.dto.EpisodioDTO;
 import com.marceloribeirodev.screenmatch.dto.SerieDTO;
+import com.marceloribeirodev.screenmatch.model.Categoria;
 import com.marceloribeirodev.screenmatch.model.Serie;
 import com.marceloribeirodev.screenmatch.repository.SerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,10 @@ public class SerieService {
                 .stream()
                 .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()))
                 .collect(Collectors.toList());
+    }
+
+    public List<SerieDTO> obterSeriesPorCategoria(String nomeCategoria) {
+        Categoria categoria = Categoria.fromStringPortugues(nomeCategoria);
+        return converteDados(serieRepository.findByGenero(categoria));
     }
 }

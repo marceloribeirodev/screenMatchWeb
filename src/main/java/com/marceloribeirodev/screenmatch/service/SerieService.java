@@ -30,6 +30,6 @@ public class SerieService {
     }
 
     public List<SerieDTO> obterLancamentos() {
-        return converteDados(serieRepository.findTop5ByOrderByEpisodiosDataLancamentoDesc());
+        return converteDados(serieRepository.encontrarEpisodiosMaisRecentes());
     }
 }
